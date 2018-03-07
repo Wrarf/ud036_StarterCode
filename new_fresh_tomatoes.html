@@ -1,0 +1,156 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- ICON LIBRARY FROM https://www.w3schools.com/howto/howto_css_star_rating.asp -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="new_fresh_tomatoes.css">
+            <title>Fresh Tomatoes - HOME PAGE</title>
+        </head>
+    
+
+        <body>
+            <!-- MOVIES -->
+            <div class="container">
+    
+				<div class="box">
+					<img src="https://upload.wikimedia.org/wikipedia/en/0/05/Up_%282009_film%29.jpg">
+					<span class="description main-infos">
+						<p><strong>Up</strong></p>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+						<p>Pete Docter</p>
+                    </span>
+                    <br>
+                    <span class="description more-infos"><span class="button" onclick=openOverlay(0)>TRAILER</span> | <a class="button">REVIEWS</a></span>
+                </div> 
+    
+				<div class="box">
+					<img src="https://fiu-assets-2-syitaetz61hl2sa.stackpathdns.com/static/use-media-items/17/16574/upto-700xauto/56702d32/Howls_Moving_Castle-Olly_Moss.jpeg?resolution=0">
+					<span class="description main-infos">
+						<p><strong>Howl's Moving Castle</strong></p>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+						<p>Hayao Miyazaki</p>
+                    </span>
+                    <br>
+                    <span class="description more-infos"><span class="button" onclick=openOverlay(1)>TRAILER</span> | <a class="button">REVIEWS</a></span>
+                </div> 
+    
+				<div class="box">
+					<img src="https://eu.movieposter.com/posters/archive/main/145/MPW-72510">
+					<span class="description main-infos">
+						<p><strong>Midnight in Paris</strong></p>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+						<p>Woody Allen</p>
+                    </span>
+                    <br>
+                    <span class="description more-infos"><span class="button" onclick=openOverlay(2)>TRAILER</span> | <a class="button">REVIEWS</a></span>
+                </div> 
+    
+				<div class="box">
+					<img src="http://images6.fanpop.com/image/photos/40100000/Toy-Story-3-The-Great-Escape-Poster-pixar-40152166-354-500.jpg">
+					<span class="description main-infos">
+						<p><strong>Toy Story 3</strong></p>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+						<p>Lee Unkrich</p>
+                    </span>
+                    <br>
+                    <span class="description more-infos"><span class="button" onclick=openOverlay(3)>TRAILER</span> | <a class="button">REVIEWS</a></span>
+                </div> 
+    
+				<div class="box">
+					<img src="https://i.pinimg.com/564x/67/25/3c/67253cb97e3827cc3738c4140f9c9891.jpg">
+					<span class="description main-infos">
+						<p><strong>Eternal Sunshine of the Spotless Mind</strong></p>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+						<p>Michel Gondry</p>
+                    </span>
+                    <br>
+                    <span class="description more-infos"><span class="button" onclick=openOverlay(4)>TRAILER</span> | <a class="button">REVIEWS</a></span>
+                </div> 
+    
+				<div class="box">
+					<img src="http://poolga.com/shared/images/poolgas/iphone_2032.jpg">
+					<span class="description main-infos">
+						<p><strong>The Grand Budapest Hotel</strong></p>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+						<p>Wes Anderson</p>
+                    </span>
+                    <br>
+                    <span class="description more-infos"><span class="button" onclick=openOverlay(5)>TRAILER</span> | <a class="button">REVIEWS</a></span>
+                </div> 
+    
+				<div class="box">
+					<img src="https://pre00.deviantart.net/6308/th/pre/f/2015/160/3/a/birdman_vector_poster_by_metalraj-d8wpn4q.jpg">
+					<span class="description main-infos">
+						<p><strong>Birdman or (The Unexpected Virtue of Ignorance)</strong></p>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+						<p>Alejandro González Iñárritu</p>
+                    </span>
+                    <br>
+                    <span class="description more-infos"><span class="button" onclick=openOverlay(6)>TRAILER</span> | <a class="button">REVIEWS</a></span>
+                </div> 
+    
+
+			</div>
+
+            <!-- TRAILER CONTAINER -->
+            <div id="overlay" onclick="closeOverlay()">
+                <iframe id="trailer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+    
+            <script>
+                function openOverlay(movie_number) {
+                    document.getElementById("overlay").style.display = "block";
+                    playVideo(movie_number);
+                }
+
+                function closeOverlay() {
+                    document.getElementById("overlay").style.display = "none";
+                    stopVideo();
+                }
+
+                var trailer_code = ["https://www.youtube.com/embed/qas5lWp7_R0?autoplay=1", "https://www.youtube.com/embed/iwROgK94zcM?autoplay=1", "https://www.youtube.com/embed/FAfR8omt-CY?autoplay=1", "https://www.youtube.com/embed/ZZv1vki4ou4?autoplay=1", "https://www.youtube.com/embed/hj7Wgd_Yn94?autoplay=1", "https://www.youtube.com/embed/1Fg5iWmQjwk?autoplay=1", "https://www.youtube.com/embed/uJfLoE6hanc?autoplay=1"];
+
+                function playVideo(movie_number) {
+    				document.getElementById("trailer").src = trailer_code[movie_number];
+    			}
+
+    			function stopVideo() {
+    				document.getElementById("trailer").src = "";
+    			}
+    			
+    	    </script>
+
+		</body>
+	</html>

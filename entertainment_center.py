@@ -1,6 +1,5 @@
-# -*- coding: cp1252 -*-
-import media
-import fresh_tomatoes
+Ôªøimport media
+import test_new_fresh_tomatoes
 
 standard_reviews = ["Nice film", "I liked it"]
 
@@ -15,7 +14,7 @@ up = media.Movie("Up",
                  [],
                  standard_reviews)
 
-howls_moving_castle = media.Movie("Howl's Moving Castel",
+howls_moving_castle = media.Movie("Howl's Moving Castle",
                                   "Hayao Miyazaki",
                                   "When an unconfident young woman is cursed with an old body by a spiteful witch, her only chance of breaking the spell lies with a self-indulgent yet insecure young wizard and his companions in his legged, walking castle.",
                                   "https://fiu-assets-2-syitaetz61hl2sa.stackpathdns.com/static/use-media-items/17/16574/upto-700xauto/56702d32/Howls_Moving_Castle-Olly_Moss.jpeg?resolution=0",
@@ -32,7 +31,7 @@ midnight_in_paris = media.Movie("Midnight in Paris",
                                 "https://eu.movieposter.com/posters/archive/main/145/MPW-72510",
                                 "https://www.youtube.com/watch?v=FAfR8omt-CY&t=1s",
                                 ["comedy", "romance"],
-                                "2011"
+                                "2011",
                                 5,
                                 ["Owen Wilson", "Rachel McAdams", "Kathy Bates"],
                                 standard_reviews)
@@ -70,8 +69,8 @@ grand_budapest_hotel = media.Movie("The Grand Budapest Hotel",
                                    ["Ralph Fiennes", "Tony Revolori", "F. Murray Abraham"],
                                    standard_reviews)
 
-birdman = media.Movie("Birdman or (The Unespected Virtue of Ignorance)",
-                      "Alejandro Gonz·lez IÒ·rritu",
+birdman = media.Movie("Birdman or (The Unexpected Virtue of Ignorance)",
+                      "Alejandro Gonz√°lez I√±√°rritu",
                       "A washed-up actor, who once played an iconic superhero, attempts to revive his career by writing and starring in his very own Broadway play.",
                       "https://pre00.deviantart.net/6308/th/pre/f/2015/160/3/a/birdman_vector_poster_by_metalraj-d8wpn4q.jpg",
                       "https://www.youtube.com/watch?v=uJfLoE6hanc&t=4s",
@@ -81,5 +80,6 @@ birdman = media.Movie("Birdman or (The Unespected Virtue of Ignorance)",
                       ["Michael Keaton", "Edward Norton", "Zach Galifianakis", "Emma Stone"],
                       standard_reviews)
 
-movies = [toy_story, spirited_away, the_truman_show, midnight_in_paris, up, birdman]
-#fresh_tomatoes.open_movies_page(movies)
+movies = [up, howls_moving_castle, midnight_in_paris, toy_story_3, spotless_mind,
+          grand_budapest_hotel, birdman]
+test_new_fresh_tomatoes.open_movies_page(movies)
