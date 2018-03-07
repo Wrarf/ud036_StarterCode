@@ -1,5 +1,5 @@
 ﻿import media
-import test_new_fresh_tomatoes
+import fresh_tomatoes
 
 standard_reviews = ["Nice film", "I liked it"]
 
@@ -82,4 +82,4 @@ birdman = media.Movie("Birdman or (The Unexpected Virtue of Ignorance)",
 
 movies = [up, howls_moving_castle, midnight_in_paris, toy_story_3, spotless_mind,
           grand_budapest_hotel, birdman]
-test_new_fresh_tomatoes.open_movies_page(movies)
+fresh_tomatoes.open_movies_page(movies)
