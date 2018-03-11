@@ -89,6 +89,7 @@ img {
 	margin-left: 10%;
 	width: 80%;
 	height: 80%;
+	z-index: 3;
 }
 
 #reviews-container {

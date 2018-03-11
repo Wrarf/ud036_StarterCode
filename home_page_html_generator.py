@@ -169,20 +169,21 @@ def get_variables_code(movies, movie_number):
 
     #other variables            
     for i in range(0, 8):
-        html += "\n\n\t\t\t\tvar " + infos_names[i] + " = ["
-        for j in range(0, movie_number):
-            if type(infos[i][j]) is list:
-                html += "["
-                for k in range(0, len(infos[i][j])):
-                    html += "\"" + infos[i][j][k] + "\""
-                    if k < len(infos[i][j]) - 1:
+        if infos_names[i] != "poster_image_url" and infos_names[i] != "rating" :
+            html += "\n\n\t\t\t\tvar " + infos_names[i] + " = ["
+            for j in range(0, movie_number):
+                if type(infos[i][j]) is list:
+                    html += "["
+                    for k in range(0, len(infos[i][j])):
+                        html += "\"" + infos[i][j][k] + "\""
+                        if k < len(infos[i][j]) - 1:
+                            html += ", "
+                    html += "]"
+                else:
+                    html += "\"" + str(infos[i][j]) + "\"" 
+                if j < movie_number - 1:
                         html += ", "
-                html += "]"
-            else:
-                html += "\"" + str(infos[i][j]) + "\"" 
-            if j < movie_number - 1:
-                    html += ", "
-        html += "];"
+            html += "];"
 
     return html
 
