@@ -4,7 +4,7 @@ class Movie():
     """ This class provides a way to store movie related information """
     
     def __init__(self, title, director, storyline, poster_image_url,
-                 youtube_trailer_url, genres, year, rating, cast, reviews):
+                 youtube_trailer_url, genres, year, rating, cast):
         self.title = title
         self.director = director
         self.storyline = storyline
@@ -14,5 +14,4 @@ class Movie():
         self.year = year
         self.rating = rating
         self.cast = cast
-        self.reviews = reviews
         

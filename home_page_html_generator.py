@@ -8,7 +8,6 @@ genres = []
 year = []
 rating = []
 cast = []
-reviews = []
 
 infos = { 0: title,
           1: director,
@@ -17,8 +16,7 @@ infos = { 0: title,
           4: genres,
           5: cast,
           6: rating,
-          7: storyline,
-          8: reviews
+          7: storyline
         }
 
 infos_names = { 0: "title",
@@ -28,8 +26,7 @@ infos_names = { 0: "title",
                 4: "genres",
                 5: "cast",
                 6: "rating",
-                7: "storyline",
-                8: "reviews"
+                7: "storyline"
               }
 
 def create_home_page_html(movies):
@@ -87,7 +84,7 @@ def get_body(movies):
                 <iframe id="trailer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 <div id="reviews-container">'''
 
-    for i in range(0,8):
+    for i in range(0, 8):
         if infos_names[i] != "poster_image_url" and infos_names[i] != "rating" :
             html += "\n\t\t\t\t\t<p id=\"" + infos_names[i] + "\"></p>"
     
@@ -130,7 +127,6 @@ def get_movie_infos(movie):
     year.append(movie.year)
     rating.append(movie.rating)
     cast.append(movie.cast)
-    reviews.append(movie.reviews)
         
 def get_poster_code(poster_image_url):
     return "\n\t\t\t\t\t<img src=\"" + poster_image_url + "\">"

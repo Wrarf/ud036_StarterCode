@@ -1,8 +1,6 @@
 ﻿import media
 import fresh_tomatoes
 
-standard_reviews = ["Nice film", "I liked it"]
-
 up = media.Movie("Up",
                  "Pete Docter",
                  "After the death of his wife and an incident at home, an old man, Carl Fredericksen, is forced into a retirement home. However, he still wants to go on the adventure to South America he and his wife planned.Ultimately, the adventure involves a flying house, a young boy, a talking dog and a strange, large bird.",
@@ -11,8 +9,7 @@ up = media.Movie("Up",
                  ["adventure", "animation", "family", "comedy"],
                  "2009",
                  5,
-                 [],
-                 standard_reviews)
+                 [])
 
 howls_moving_castle = media.Movie("Howl's Moving Castle",
                                   "Hayao Miyazaki",
@@ -22,8 +19,7 @@ howls_moving_castle = media.Movie("Howl's Moving Castle",
                                   ["animation", "drama", "fantasy", "science fiction", "romance"],
                                   "2005",
                                   4,
-                                  [],
-                                  standard_reviews)
+                                  [])
 
 midnight_in_paris = media.Movie("Midnight in Paris",
                                 "Woody Allen",
@@ -33,8 +29,7 @@ midnight_in_paris = media.Movie("Midnight in Paris",
                                 ["comedy", "romance"],
                                 "2011",
                                 5,
-                                ["Owen Wilson", "Rachel McAdams", "Kathy Bates"],
-                                standard_reviews)
+                                ["Owen Wilson", "Rachel McAdams", "Kathy Bates"])
 
 toy_story_3 = media.Movie("Toy Story 3",
                           "Lee Unkrich",
@@ -44,8 +39,7 @@ toy_story_3 = media.Movie("Toy Story 3",
                           ["animation", "comedy"],
                           "2010",
                           5,
-                          [],
-                          standard_reviews)
+                          [])
 
 spotless_mind = media.Movie("Eternal Sunshine of the Spotless Mind",
                             "Michel Gondry",
@@ -55,8 +49,7 @@ spotless_mind = media.Movie("Eternal Sunshine of the Spotless Mind",
                             ["comedy", "drama", "science fiction", "romance"],
                             "2004",
                             5,
-                            ["Jim Carrey", "Kate Winslet", "Kirsten Dunst", "Mark Ruffalo", "Elijah Wood", "Tom Wilkinson"],
-                            standard_reviews)
+                            ["Jim Carrey", "Kate Winslet", "Kirsten Dunst", "Mark Ruffalo", "Elijah Wood", "Tom Wilkinson"])
 
 grand_budapest_hotel = media.Movie("The Grand Budapest Hotel",
                                    "Wes Anderson",
@@ -66,8 +59,7 @@ grand_budapest_hotel = media.Movie("The Grand Budapest Hotel",
                                    ["comedy", "drama"],
                                    "2014",
                                    4,
-                                   ["Ralph Fiennes", "Tony Revolori", "F. Murray Abraham"],
-                                   standard_reviews)
+                                   ["Ralph Fiennes", "Tony Revolori", "F. Murray Abraham"])
 
 birdman = media.Movie("Birdman or (The Unexpected Virtue of Ignorance)",
                       "Alejandro González Iñárritu",
@@ -77,8 +69,7 @@ birdman = media.Movie("Birdman or (The Unexpected Virtue of Ignorance)",
                       ["comedy", "drama"],
                       "2014",
                       5,
-                      ["Michael Keaton", "Edward Norton", "Zach Galifianakis", "Emma Stone"],
-                      standard_reviews)
+                      ["Michael Keaton", "Edward Norton", "Zach Galifianakis", "Emma Stone"])
 
 movies = [up, howls_moving_castle, midnight_in_paris, toy_story_3, spotless_mind,
           grand_budapest_hotel, birdman]
