@@ -1,4 +1,36 @@
-import media
+﻿import media
+
+title = []
+director = []
+storyline = []
+poster_image_url = []
+genres = []
+year = []
+rating = []
+cast = []
+reviews = []
+
+infos = { 0: title,
+          1: director,
+          2: year,
+          3: poster_image_url ,
+          4: genres,
+          5: cast,
+          6: rating,
+          7: storyline,
+          8: reviews
+        }
+
+infos_names = { 0: "title",
+                1: "director",
+                2: "year",
+                3: "poster_image_url",
+                4: "genres",
+                5: "cast",
+                6: "rating",
+                7: "storyline",
+                8: "reviews"
+              }
 
 def create_home_page_html(movies):
     html = create_home_html_code(movies)
@@ -12,12 +44,9 @@ def create_home_html_code(movies):
     <!DOCTYPE html>
     <html lang="en">
     '''
-    
-    head = get_head()
-    html += head
 
-    body = get_body(movies)
-    html += body
+    html += get_head()
+    html += get_body(movies)
 
     html += "\n\t</html>"
     
@@ -28,8 +57,6 @@ def get_head():
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <!-- ICON LIBRARY FROM https://www.w3schools.com/howto/howto_css_star_rating.asp -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="new_fresh_tomatoes.css">
             <title>Fresh Tomatoes - HOME PAGE</title>
         </head>
@@ -46,41 +73,65 @@ def get_body(movies):
 
     movie_number = 0
     for movie in movies:
-        html += get_movie_infos(movie, movie_number)
+        get_movie_infos(movie)
+        html += get_movie_infos_code(movie_number)
         movie_number += 1
         
-    html += "\n\n\t\t\t</div>"
+    html += "\n\t\t\t</div>"
 
-    #trailer container
+    #trailer and reviews container
     html +='''
 
-            <!-- TRAILER CONTAINER -->
+            <!-- TRAILER AND REVIEWS CONTAINER -->
             <div id="overlay" onclick="closeOverlay()">
                 <iframe id="trailer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <div id="reviews-container">'''
+
+    for i in range(0,8):
+        if infos_names[i] != "poster_image_url" and infos_names[i] != "rating" :
+            html += "\n\t\t\t\t\t<p id=\"" + infos_names[i] + "\"></p>"
+    
+    html += '''
+                </div>
             </div>
     '''
 
-    #trailer functions
+    #trailer and reviews infos/functions
+    html += "\n\n\t\t\t<script>"
+    html += get_variables_code(movies, movie_number)
     html += get_trailer_functions(movies, movie_number)
+    html += get_reviews_functions()
+    html += "\n\t\t\t</script>"
     
     html += "\n\n\t\t</body>"
     
     return html
 
-def get_movie_infos(movie, movie_number):
+def get_movie_infos_code(movie_number):    
     html = "\n\t\t\t\t<div class=\"box\">"
-    html += get_poster_code(movie.poster_image_url) + "\n\t\t\t\t\t<span class=\"description main-infos\">"
-    html += get_title_code(movie.title) + get_rating_code(movie.rating)
-    html += get_director_code(movie.director)
+    html += get_poster_code(poster_image_url[movie_number]) + "\n\t\t\t\t\t<span class=\"description main-infos\">"
+    html += get_title_code(title[movie_number]) + get_rating_code(rating[movie_number])
+    html += get_director_code(director[movie_number])
     html += '''
                     </span>
                     <br>
-                    <span class="description more-infos"><span class="button" onclick=openOverlay(''' + str(movie_number) + ''')>TRAILER</span> | <a class="button">REVIEWS</a></span>
-                </div> 
-    '''
+                    <span class="description more-infos"><span class="button" onclick=playVideo(''' + str(movie_number) + ''')>TRAILER</span>'''
+    html += " | <span class=\"button\" onclick=openReviews(" + str(movie_number) + ")>REVIEWS</span></span>"
+    html += "\n\t\t\t\t</div>\n"
 
     return html
 
+def get_movie_infos(movie):
+    title.append(movie.title)
+    director.append(movie.director)
+    storyline.append(movie.storyline)
+    poster_image_url.append(movie.poster_image_url)
+    genres.append(movie.genres)
+    year.append(movie.year)
+    rating.append(movie.rating)
+    cast.append(movie.cast)
+    reviews.append(movie.reviews)
+        
 def get_poster_code(poster_image_url):
     return "\n\t\t\t\t\t<img src=\"" + poster_image_url + "\">"
 
@@ -91,32 +142,22 @@ def get_rating_code(rating):
     html = ""
     for star in range(0, rating):
         html += '''
-                        <span class="fa fa-star checked"></span>'''
+                        <span class="star checked">★</span>'''
     black_stars_number = 5 - rating
     for black_star in range(0, black_stars_number):
         html += '''
-                        <span class="fa fa-star"></span>'''
+                        <span class="star">★</span>'''
 
     return html
 
 def get_director_code(director):
     return "\n\t\t\t\t\t\t<p>" + director + "</p>"
 
-def get_trailer_functions(movies, movie_number):
-    html = '''
-            <script>
-                function openOverlay(movie_number) {
-                    document.getElementById("overlay").style.display = "block";
-                    playVideo(movie_number);
-                }
-
-                function closeOverlay() {
-                    document.getElementById("overlay").style.display = "none";
-                    stopVideo();
-                }
-
-                var trailer_code = ['''
-
+def get_variables_code(movies, movie_number):
+    html = ""
+    
+    #trailer
+    html += "\n\t\t\t\tvar trailer_code = ["
     index = 0
     for movie in movies:
         html += "\"" + get_trailer_code(movie.youtube_trailer_url) + "\""
@@ -126,17 +167,50 @@ def get_trailer_functions(movies, movie_number):
 
     html += "];"
 
+    #other variables            
+    for i in range(0, 8):
+        html += "\n\n\t\t\t\tvar " + infos_names[i] + " = ["
+        for j in range(0, movie_number):
+            if type(infos[i][j]) is list:
+                html += "["
+                for k in range(0, len(infos[i][j])):
+                    html += "\"" + infos[i][j][k] + "\""
+                    if k < len(infos[i][j]) - 1:
+                        html += ", "
+                html += "]"
+            else:
+                html += "\"" + str(infos[i][j]) + "\"" 
+            if j < movie_number - 1:
+                    html += ", "
+        html += "];"
+
+    return html
+
+def get_trailer_functions(movies, movie_number):
+    html = '''
+
+                function openOverlay() {
+                    document.getElementById("overlay").style.display = "block";
+                }
+
+                function closeOverlay() {
+                    document.getElementById("overlay").style.display = "none";
+                    stopVideo();
+                    closeReviews();
+                }
+    '''
+
     html += '''
 
                 function playVideo(movie_number) {
+                    openOverlay();
     				document.getElementById("trailer").src = trailer_code[movie_number];
     			}
 
     			function stopVideo() {
     				document.getElementById("trailer").src = "";
     			}
-    			
-    	    </script>'''
+    '''
     
     return html
 
@@ -149,4 +223,27 @@ def get_trailer_code(youtube_trailer_url):
     trailer_code+= "?autoplay=1"
                                         
     return trailer_code
+
+def get_reviews_functions():
+    html = '''             
+                function openReviews(movie_number) {
+                    openOverlay();
+                    get_movie_infos(movie_number);
+                    document.getElementById("reviews-container").style.display = "block";
+                }
+
+                function get_movie_infos(movie_number) { '''
     
+    for i in range(0, 8):
+        if infos_names[i] != "poster_image_url" and infos_names[i] != "rating" :
+            html += "\n\t\t\t\t\tdocument.getElementById(\"" + infos_names[i] + "\").innerHTML = " + infos_names[i] + "[movie_number];"
+
+    html += "\n\t\t\t\t}"
+                
+    html += '''
+
+    			function closeReviews() {
+                    document.getElementById("reviews-container").style.display = "none";
+                }'''
+    
+    return html

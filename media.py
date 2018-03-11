@@ -15,3 +15,4 @@ class Movie():
         self.rating = rating
         self.cast = cast
         self.reviews = reviews
+        

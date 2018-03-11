@@ -84,10 +84,37 @@ img {
 }
 
 #trailer {
+	position: absolute;
 	margin-top: 5%;
 	margin-left: 10%;
 	width: 80%;
 	height: 80%;
+}
+
+#reviews-container {
+	margin: 5%;
+	height: 60%;
+	background-color: black;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	color: white;
+	padding: 5%;
+	overflow: auto;
+}
+
+#title {
+	font-size: xx-large;
+	color: #E25822;
+}
+
+#director, #year, #cast, #genres {
+	font-size: small;
+	font-style: italic;
+}
+
+#storyline {
+	font-style: italic;
+	padding-top: 1%;
 }
 
 @media screen and (min-width: 360px) {
