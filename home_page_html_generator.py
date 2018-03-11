@@ -89,6 +89,7 @@ def get_body(movies):
             html += "\n\t\t\t\t\t<p id=\"" + infos_names[i] + "\"></p>"
     
     html += '''
+                    <p id="reviews-message">There are no reviews.</p>
                 </div>
             </div>
     '''

@@ -62,7 +62,7 @@ grand_budapest_hotel = media.Movie("The Grand Budapest Hotel",
                                    ["Ralph Fiennes", "Tony Revolori", "F. Murray Abraham"])
 
 birdman = media.Movie("Birdman or (The Unexpected Virtue of Ignorance)",
-                      "Alejandro González Iñárritu",
+                      "Alejandro G. Iñárritu",
                       "A washed-up actor, who once played an iconic superhero, attempts to revive his career by writing and starring in his very own Broadway play.",
                       "http://www.cinema4stelle.it/immagini/birdman.jpg",
                       "https://www.youtube.com/watch?v=uJfLoE6hanc&t=4s",

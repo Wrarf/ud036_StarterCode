@@ -118,6 +118,11 @@ img {
 	padding-top: 1%;
 }
 
+#reviews-message {
+        text-align: center;
+        margin-top: 2%;
+}
+
 @media screen and (min-width: 360px) {
 	.box{
 		width: 252px;
