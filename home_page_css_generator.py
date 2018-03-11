@@ -94,7 +94,6 @@ img {
 
 #reviews-container {
 	margin: 5%;
-	height: 60%;
 	background-color: black;
 	opacity: 0.8;
 	filter: alpha(opacity=80);
