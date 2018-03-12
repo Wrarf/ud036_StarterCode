@@ -54,7 +54,7 @@ def get_head():
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="new_fresh_tomatoes.css">
+            <link rel="stylesheet" href="fresh_tomatoes.css">
             <title>Fresh Tomatoes - HOME PAGE</title>
         </head>
     '''
@@ -164,7 +164,7 @@ def get_variables_code(movies, movie_number):
 
     html += "];"
 
-    #other variables            
+    #other variables (whithout the poster and rating)
     for i in range(0, 8):
         if infos_names[i] != "poster_image_url" and infos_names[i] != "rating" :
             html += "\n\n\t\t\t\tvar " + infos_names[i] + " = ["
