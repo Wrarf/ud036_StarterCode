@@ -32,7 +32,7 @@ infos_names = { 0: "title",
 def create_home_page_html(movies):
     html = create_home_html_code(movies)
     
-    home_page = open("new_fresh_tomatoes.html", "w")
+    home_page = open("fresh_tomatoes.html", "w")
     home_page.write(html)
     home_page.close()
 

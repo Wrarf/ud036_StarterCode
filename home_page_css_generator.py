@@ -152,6 +152,6 @@ img {
 '''
 
 def create_home_page_css():
-    home_page_css = open("new_fresh_tomatoes.css", "w")
+    home_page_css = open("fresh_tomatoes.css", "w")
     home_page_css.write(css)
     home_page_css.close()
