@@ -100,6 +100,7 @@ img {
 	color: white;
 	padding: 5%;
 	overflow: auto;
+	display: none;
 }
 
 #title {

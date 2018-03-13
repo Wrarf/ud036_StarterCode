@@ -9,34 +9,36 @@ year = []
 rating = []
 cast = []
 
-infos = { 0: title,
-          1: director,
-          2: year,
-          3: poster_image_url ,
-          4: genres,
-          5: cast,
-          6: rating,
-          7: storyline
-        }
+infos = {0: title,
+         1: director,
+         2: year,
+         3: poster_image_url,
+         4: genres,
+         5: cast,
+         6: rating,
+         7: storyline
+         }
 
-infos_names = { 0: "title",
-                1: "director",
-                2: "year",
-                3: "poster_image_url",
-                4: "genres",
-                5: "cast",
-                6: "rating",
-                7: "storyline"
-              }
+infos_names = {0: "title",
+               1: "director",
+               2: "year",
+               3: "poster_image_url",
+               4: "genres",
+               5: "cast",
+               6: "rating",
+               7: "storyline"
+               }
+
 
 def create_home_page_html(movies):
     html = create_home_html_code(movies)
-    
+
     home_page = open("fresh_tomatoes.html", "w")
     home_page.write(html)
     home_page.close()
 
-def create_home_html_code(movies):    
+
+def create_home_html_code(movies):
     html = '''
     <!DOCTYPE html>
     <html lang="en">
@@ -46,21 +48,27 @@ def create_home_html_code(movies):
     html += get_body(movies)
 
     html += "\n\t</html>"
-    
+
     return html
 
+
 def get_head():
-    return '''
+    html = '''
         <head>
             <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="viewport" content="width=device-width,'''
+    html += " initial-scale=1.0\">"
+    html += '''
             <link rel="stylesheet" href="fresh_tomatoes.css">
             <title>Fresh Tomatoes - HOME PAGE</title>
         </head>
     '''
 
+    return html
+
+
 def get_body(movies):
-    #main part of the page
+    # main part of the page
     html = '''
 
         <body>
@@ -73,51 +81,61 @@ def get_body(movies):
         get_movie_infos(movie)
         html += get_movie_infos_code(movie_number)
         movie_number += 1
-        
+
     html += "\n\t\t\t</div>"
 
-    #trailer and reviews container
-    html +='''
+    # trailer and reviews container
+    html += '''
 
             <!-- TRAILER AND REVIEWS CONTAINER -->
             <div id="overlay" onclick="closeOverlay()">
-                <iframe id="trailer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                <div id="reviews-container">'''
+                <iframe id="trailer" src="" frameborder="0" allow="autoplay;'''
+    html += "encrypted-media\" allowfullscreen></iframe>"
+    html += '''
+               <div id="reviews-container">
+    '''
 
     for i in range(0, 8):
-        if infos_names[i] != "poster_image_url" and infos_names[i] != "rating" :
+        if infos_names[i] != "poster_image_url" and infos_names[i] != "rating":
             html += "\n\t\t\t\t\t<p id=\"" + infos_names[i] + "\"></p>"
-    
+
     html += '''
                     <p id="reviews-message">There are no reviews.</p>
                 </div>
             </div>
     '''
 
-    #trailer and reviews infos/functions
+    # trailer and reviews infos/functions
     html += "\n\n\t\t\t<script>"
     html += get_variables_code(movies, movie_number)
     html += get_trailer_functions(movies, movie_number)
     html += get_reviews_functions()
     html += "\n\t\t\t</script>"
-    
+
     html += "\n\n\t\t</body>"
-    
+
     return html
 
-def get_movie_infos_code(movie_number):    
+
+def get_movie_infos_code(movie_number):
     html = "\n\t\t\t\t<div class=\"box\">"
-    html += get_poster_code(poster_image_url[movie_number]) + "\n\t\t\t\t\t<span class=\"description main-infos\">"
-    html += get_title_code(title[movie_number]) + get_rating_code(rating[movie_number])
+    html += get_poster_code(poster_image_url[movie_number]) + \
+        "\n\t\t\t\t\t<span class=\"description main-infos\">"
+    html += get_title_code(title[movie_number]) + \
+        get_rating_code(rating[movie_number])
     html += get_director_code(director[movie_number])
     html += '''
                     </span>
                     <br>
-                    <span class="description more-infos"><span class="button" onclick=playVideo(''' + str(movie_number) + ''')>TRAILER</span>'''
-    html += " | <span class=\"button\" onclick=openReviews(" + str(movie_number) + ")>REVIEWS</span></span>"
+                    <span class="description more-infos">'''
+    html += '''<span class="button" onclick=playVideo(''' + \
+        str(movie_number) + ''')>TRAILER</span>'''
+    html += " | <span class=\"button\" onclick=openReviews(" + str(
+        movie_number) + ")>REVIEWS</span></span>"
     html += "\n\t\t\t\t</div>\n"
 
     return html
+
 
 def get_movie_infos(movie):
     title.append(movie.title)
@@ -128,13 +146,16 @@ def get_movie_infos(movie):
     year.append(movie.year)
     rating.append(movie.rating)
     cast.append(movie.cast)
-        
+
+
 def get_poster_code(poster_image_url):
     return "\n\t\t\t\t\t<img src=\"" + poster_image_url + "\">"
 
+
 def get_title_code(title):
     return "\n\t\t\t\t\t\t<p><strong>" + title + "</strong></p>"
-    
+
+
 def get_rating_code(rating):
     html = ""
     for star in range(0, rating):
@@ -147,13 +168,15 @@ def get_rating_code(rating):
 
     return html
 
+
 def get_director_code(director):
     return "\n\t\t\t\t\t\t<p>" + director + "</p>"
 
+
 def get_variables_code(movies, movie_number):
     html = ""
-    
-    #trailer
+
+    # trailer
     html += "\n\t\t\t\tvar trailer_code = ["
     index = 0
     for movie in movies:
@@ -164,9 +187,9 @@ def get_variables_code(movies, movie_number):
 
     html += "];"
 
-    #other variables (whithout the poster and rating)
+    # other variables (whithout the poster and rating)
     for i in range(0, 8):
-        if infos_names[i] != "poster_image_url" and infos_names[i] != "rating" :
+        if infos_names[i] != "poster_image_url" and infos_names[i] != "rating":
             html += "\n\n\t\t\t\tvar " + infos_names[i] + " = ["
             for j in range(0, movie_number):
                 if type(infos[i][j]) is list:
@@ -177,12 +200,13 @@ def get_variables_code(movies, movie_number):
                             html += ", "
                     html += "]"
                 else:
-                    html += "\"" + str(infos[i][j]) + "\"" 
+                    html += "\"" + str(infos[i][j]) + "\""
                 if j < movie_number - 1:
-                        html += ", "
+                    html += ", "
             html += "];"
 
     return html
+
 
 def get_trailer_functions(movies, movie_number):
     html = '''
@@ -202,15 +226,17 @@ def get_trailer_functions(movies, movie_number):
 
                 function playVideo(movie_number) {
                     openOverlay();
-    				document.getElementById("trailer").src = trailer_code[movie_number];
-    			}
+                    document.getElementById("trailer").src = '''
+    html += '''trailer_code[movie_number];
+                }
 
-    			function stopVideo() {
-    				document.getElementById("trailer").src = "";
-    			}
+                function stopVideo() {
+                    document.getElementById("trailer").src = "";
+                }
     '''
-    
+
     return html
+
 
 def get_trailer_code(youtube_trailer_url):
     trailer_code = youtube_trailer_url.replace("watch?v=", "embed/")
@@ -218,30 +244,34 @@ def get_trailer_code(youtube_trailer_url):
     if index_of_t_string > -1:
         delete_by_here = - (len(trailer_code) - index_of_t_string)
         trailer_code = trailer_code[:delete_by_here]
-    trailer_code+= "?autoplay=1"
-                                        
+    trailer_code += "?autoplay=1"
+
     return trailer_code
 
+
 def get_reviews_functions():
-    html = '''             
+    html = '''
                 function openReviews(movie_number) {
                     openOverlay();
                     get_movie_infos(movie_number);
-                    document.getElementById("reviews-container").style.display = "block";
+                    document.getElementById("reviews-container")'''
+    html += '''.style.display = "block";
                 }
 
                 function get_movie_infos(movie_number) { '''
-    
+
     for i in range(0, 8):
-        if infos_names[i] != "poster_image_url" and infos_names[i] != "rating" :
-            html += "\n\t\t\t\t\tdocument.getElementById(\"" + infos_names[i] + "\").innerHTML = " + infos_names[i] + "[movie_number];"
+        if infos_names[i] != "poster_image_url" and infos_names[i] != "rating":
+            html += "\n\t\t\t\t\tdocument.getElementById(\"" + infos_names[
+                i] + "\").innerHTML = " + infos_names[i] + "[movie_number];"
 
     html += "\n\t\t\t\t}"
-                
+
     html += '''
 
-    			function closeReviews() {
-                    document.getElementById("reviews-container").style.display = "none";
+                function closeReviews() {
+                    document.getElementById("reviews-container")'''
+    html += '''.style.display = "none";
                 }'''
-    
+
     return html
