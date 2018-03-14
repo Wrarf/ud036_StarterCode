@@ -76,6 +76,7 @@ def get_body(movies):
             <div class="container">
     '''
 
+    # movie_number is the number of movies in entertainment_center.py
     movie_number = 0
     for movie in movies:
         get_movie_infos(movie)
@@ -95,6 +96,7 @@ def get_body(movies):
                <div id="reviews-container">
     '''
 
+    # builds the structure of the reviews
     for i in range(0, 8):
         if infos_names[i] != "poster_image_url" and infos_names[i] != "rating":
             html += "\n\t\t\t\t\t<p id=\"" + infos_names[i] + "\"></p>"
@@ -118,6 +120,7 @@ def get_body(movies):
 
 
 def get_movie_infos_code(movie_number):
+    # html code for the movie boxes
     html = "\n\t\t\t\t<div class=\"box\">"
     html += get_poster_code(poster_image_url[movie_number]) + \
         "\n\t\t\t\t\t<span class=\"description main-infos\">"
@@ -138,6 +141,7 @@ def get_movie_infos_code(movie_number):
 
 
 def get_movie_infos(movie):
+    # gets infos of the movies and puts them in the global variables
     title.append(movie.title)
     director.append(movie.director)
     storyline.append(movie.storyline)
@@ -157,6 +161,7 @@ def get_title_code(title):
 
 
 def get_rating_code(rating):
+    # gives to movies their star rating
     html = ""
     for star in range(0, rating):
         html += '''
@@ -176,7 +181,7 @@ def get_director_code(director):
 def get_variables_code(movies, movie_number):
     html = ""
 
-    # trailer
+    # stores in a javascript list all trailer urls
     html += "\n\t\t\t\tvar trailer_code = ["
     index = 0
     for movie in movies:
@@ -187,7 +192,7 @@ def get_variables_code(movies, movie_number):
 
     html += "];"
 
-    # other variables (whithout the poster and rating)
+    # stores other movie informations in javascript lists
     for i in range(0, 8):
         if infos_names[i] != "poster_image_url" and infos_names[i] != "rating":
             html += "\n\n\t\t\t\tvar " + infos_names[i] + " = ["
@@ -209,6 +214,7 @@ def get_variables_code(movies, movie_number):
 
 
 def get_trailer_functions(movies, movie_number):
+    # javascript functions to play trailers
     html = '''
 
                 function openOverlay() {
@@ -239,6 +245,7 @@ def get_trailer_functions(movies, movie_number):
 
 
 def get_trailer_code(youtube_trailer_url):
+    # changes the url of the video to an embedded url
     trailer_code = youtube_trailer_url.replace("watch?v=", "embed/")
     index_of_t_string = trailer_code.find("&t")
     if index_of_t_string > -1:
@@ -250,6 +257,7 @@ def get_trailer_code(youtube_trailer_url):
 
 
 def get_reviews_functions():
+    # javascript functions to show reviews
     html = '''
                 function openReviews(movie_number) {
                     openOverlay();
